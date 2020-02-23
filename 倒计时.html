@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>倒计时</title>
+</head>
+
+<body>
+<div id="div"></div>
+<script>
+window.onload = function clock(){
+	//当前时间
+	var today = new Date(),
+	h = today.getHours(),
+	m = today.getMinutes(),
+	s = today.getSeconds();
+	//结束时间
+	var stopTime = new Date("Oct 26 2020"),
+	stopH = stopTime.getHours(),
+	stopM = stopTime.getMinutes(),
+	stopS = stopTime.getSeconds();
+	//剩余毫秒数
+	var shengyv = stopTime.getTime() - today.getTime(),
+	//剩余天数
+	shengyvD = parseInt(shengyv/(1000*60*60*24)),
+	//除去天剩余毫秒数
+	D = parseInt(shengyv) - shengyvD*(1000*60*60*24),
+	//剩余小时数
+	shengyvH = parseInt(D/(1000*60*60)),
+	//除去天,小时剩余毫秒数
+	H = D - shengyvH*(1000*60*60),
+	//剩余分钟数
+	shengyvM = parseInt(H/(1000*60)),
+	//除去天,小时,分钟剩余毫秒数
+	M = H - shengyvM*(1000*60);
+	//剩余毫秒数化为秒数
+	S = parseInt((shengyv - shengyvD*(1000*60*60*24) - shengyvH*(1000*60*60) - shengyvM*(1000*60))/1000),
+	document.getElementById("div").innerHTML = ("距离王老师生日还有：" + shengyvD + "天" +shengyvH + "小时" + shengyvM + "分钟" + S + "秒" + "<br>");
+	// document.getElementById("div").innerHTML = ( "距离小海生日还有："+ shengyvD + "天" + shengyvH +"小时" + shengyvM + "分钟" + S + "秒"+"<br>");
+
+	setTimeout(clock,500);
+}
+
+</script>
+	
+</body>
+</html>
